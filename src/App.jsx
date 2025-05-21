@@ -1,28 +1,38 @@
-import React, { useState } from 'react';
+import { useState } from "react"
 
-function App() {
-  const [numr, setNumber] = useState(100);
-  const [aparecer, Aumentar] = useState(false);
+export function App() {
+  const [number, setNumber] = useState(100)
+  const [mostrarEsconder, setMostrarEsconder] = useState(false)
 
-  const incrementNumber = () => {
-    setNumber(numr + 100);
-  };
+  function handleAumentar() {
+    setNumber(number + 100)
+  }
 
-  const visivel = () => {
-    Aumentar(!aparecer);
-  };
+  function handleMostrarEsconder() {
+    if (mostrarEsconder === true) {
+      setMostrarEsconder(false)
+    } else {
+      setMostrarEsconder(true)
+    }
+
+  }
+
+
 
   return (
-    <div>
-      <h1>{numr}</h1>
-      <button onClick={incrementNumber}>Aumentar por 100</button>
+    <main>
+      <h1>Exercício useState</h1>
 
-      <p>{aparecer ? 'oii' : null}</p>
-      <button onClick={visivel}>
-        {aparecer ? 'Esconder' : 'Mostrar'}
-      </button>
-    </div>
-  );
+      <section>
+        <h2>Número: {number}</h2>
+        <button onClick={handleAumentar}>Aumentar 100</button>
+      </section>
+
+      <section>
+        <h2>O parágrafo que some</h2>
+        {mostrarEsconder ? <p>Em breve irei sumir</p> : ""}
+        <button onClick={handleMostrarEsconder}>{mostrarEsconder ? "Esconder" : "Mostrar"}</button>
+      </section>
+    </main>
+  )
 }
-
-export default App;
